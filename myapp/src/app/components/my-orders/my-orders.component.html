@@ -1,0 +1,69 @@
+<!-- my-orders.componenet.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Summary</title>
+  <style>
+  </style>
+</head>
+<body>
+  <h1 style = text-align:center >Your Orders</h1>
+  <div *ngFor="let order of orders" class="order-container">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Order date - {{ order.timestamp | date : "MM-dd-yyyy" }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="order-details">
+        <h2>Order detail</h2>
+        <p><strong>Name:</strong> {{ order.firstName }} {{ order.lastName }}</p>
+        <p><strong>Email:</strong> {{ order.email }}</p>
+        <p>
+          <strong>Address:</strong> {{ order.addressLine1 }},
+          {{ order.addressLine2 }}, {{ order.city }}, {{ order.state }},
+          {{ order.zipcode }}
+        </p>
+        <p>
+          <strong>Total Amount:</strong> {{ order.total_amount }}
+          {{ order.currency }}
+        </p>
+        <p><strong>Transaction ID:</strong> {{ order.transaction_id }}</p>
+        <p>
+          <strong>Timestamp:</strong>
+          {{ order.timestamp | date : "yyyy-MM-dd HH:mm:ss" }}
+        </p>
+      </div>
+      <div class="order-items">
+        <h3>Order Items</h3>
+        <ul>
+          <div *ngFor="let item of order.order_items">
+            <div class="album-info">
+              <img
+                class="album-cover"
+                [src]="BASE_API_URL + item.album.album_cover"
+                alt="Album cover"
+              />
+              <div>
+                <div class="album-title">Title: {{ item.album.album_title }}</div>
+                <div class="artist">Artist: {{ item?.album?.artist?.artist_name }}</div>
+                <div class="quantity">Quantity: {{ item.qty }}</div>
+                <div class="price">Price: ${{ item.album.price }}</div>
+              </div>
+            </div>
+              <app-album-rating
+              [album_id]="item.album.id || 0"
+              (voteChanged)="handleVoteChanged($event)"
+              ></app-album-rating>
+          </div>
+        </ul>
+      </div>
+    </mat-expansion-panel>
+  </div>
+  <div *ngIf="orders.length === 0" class="no-orders-message">
+      You don't have any orders.
+    </div>
+</body>
+</html>

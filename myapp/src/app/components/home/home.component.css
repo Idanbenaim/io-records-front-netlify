@@ -1,0 +1,13 @@
+/* Your CSS */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* Adjust this as needed */
+}
+
+.logo {
+  width: 400px;
+  height: 400px;
+  /* Other styles as needed */
+}

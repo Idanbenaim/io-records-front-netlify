@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<div class="artist-details">
+  <img [src]="BASE_API_URL + (artist$ | async)?.artist_image" alt="Artist image" width="400" height="400" />
+  <h1>{{(artist$ | async)?.artist_name}}</h1>
+  <p>{{(artist$ | async)?.artist_bio}}</p>
+</div>
+
+<h2>Related Albums</h2>
+<div class="container">
+  <div class="item" *ngFor="let item of (albums$ | async)">
+    <!-- This div contains the styling for each album card. -->
+    <div class="album-card">
+      <!-- The mat-card component from Angular Material to create a card. -->
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="album-header-image"></div>
+          <mat-card-title>{{ item.album_title }}</mat-card-title>
+          <!-- <mat-card-subtitle>Genre: {{ item.genre.genre_name }}</mat-card-subtitle> -->
+        </mat-card-header>
+        <img mat-card-image [src]="BASE_API_URL + item.album_cover" alt="Album Cover Image" />
+        <mat-card-content>
+          <p>
+            Release year: {{ item.albumYear }}<br>
+            {{ item.description }}
+          </p>
+        </mat-card-content>
+        <!-- mat-card-actions holds the card's actions (buttons). -->
+        <mat-card-actions>
+          <!-- We use mat-button directive on a button to style it with Material Design. -->
+
+          <button mat-button [routerLink]="['/album', item.id]" color="accent">See More</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

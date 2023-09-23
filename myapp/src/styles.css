@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a.mat-button:hover {
+  background-color: #673AB7; /* Deep Purple for hover */
+  color: white;
+}
+
+.active-link {
+  background-color: #FFC107; /* Amber for active link */
+  color: black;
+}
+
+/* snackbar notifications*/
+.mat-primary {
+  background-color: #673AB7;
+  color: white;
+}
+
+.mat-warn {
+  background-color: #D32F2F;
+  color: white;
+}
+
+.mat-info {
+  background-color: #0288D1;
+  color: white;
+}

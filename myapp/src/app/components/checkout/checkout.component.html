@@ -1,0 +1,54 @@
+<!-- checkout.component.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+  <mat-step>
+    <ng-template matStepLabel>Review your order</ng-template>
+    <div *ngFor="let item of cartItems">
+              <hr />
+      <div class="album-info" style="background-color: rgb(240, 149, 234)">
+        <img
+          class="album-cover"
+          [src]="BASE_API_URL + item.album.album_cover"
+          alt="Album cover"
+        />
+        <div>
+          <div class="album-title">{{ item.album.album_title }}</div>
+          <div class="quantity">
+            Quantity:
+            <span>{{ item.quantity }}</span>
+          </div>
+          <div class="price">Price: ${{ item.album.price }}</div>
+          <!-- <div class="subtotal">
+            Subtotal: ${{ item.album.price * item.quantity }}
+          </div> -->
+        </div>
+      </div>
+    </div>
+            <hr />
+    <button mat-button matStepperNext>Next</button>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Place Your Order</ng-template>
+    <!-- <p>Payment details go here.</p> -->
+    <!-- PAYPAL -->
+    <app-paypal (onApprove)="handlePayment($event)" (onError)="handlePaymentError($event)"></app-paypal>
+    <div id="paypal-button-container"></div>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+<div class="subtotal"> Order total: ${{ total }}</div>
+<button mat-raised-button class="subtotal" (click)="goBack()">Back</button>
+
+</body>
+</html>
