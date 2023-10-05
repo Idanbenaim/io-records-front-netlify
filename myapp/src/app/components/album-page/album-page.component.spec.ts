@@ -31,7 +31,7 @@ describe('AlbumPageComponent', () => {
       'Frances Farmer Will Have Her Revenge on Seattle', 'Dumb', 'Very Ape', 'Milk It',
       'Pennyroyal Tea', 'Radio Friendly Unit Shifter', 'tourette\'s', 'All Apologies'
     ],
-    album_cover: 'http://127.0.0.1:8000/images/static/images/In_Utero_Nirvana_album_cover.jpg',
+    // album_cover: 'http://127.0.0.1:8000/images/static/images/In_Utero_Nirvana_album_cover.jpg',
     quantity: 1
   };
 
