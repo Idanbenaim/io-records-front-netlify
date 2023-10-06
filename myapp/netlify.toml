@@ -1,0 +1,40 @@
+# netlify.toml
+
+# Build settings
+[build]
+  # Publish directory (where the built files are located)
+  publish = "myapp/dist/myapp"
+
+  # Build command for Angular (you may adjust this if needed)
+  command = "ng build --configuration=production"
+
+# Basic build environment settings
+[build.environment]
+  # Set your Node.js version if needed (optional)
+  # NODE_VERSION = "14"
+
+# Optional: Redirects for SPA routing (e.g., Angular routing)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Optional: Headers configuration (customize as needed)
+[[headers]]
+  # Define caching headers for assets (adjust cache-control values as needed)
+  for = "/assets/*"
+    [headers.values]
+      Cache-Control = "public, max-age=31536000, immutable"
+  # Add more headers as necessary
+
+# Optional: Redirect rules (customize as needed)
+# [[redirects]]
+#   from = "/old-path"
+#   to = "/new-path"
+#   status = 301
+
+# Optional: Rewrite rules (customize as needed)
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://your-api-service.com/api/:splat"
+#   status = 200
