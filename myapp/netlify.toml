@@ -5,8 +5,8 @@
   # Publish directory (where the built files are located)
   publish = "myapp/dist/myapp"
 
-  # Build command for Angular (you may adjust this if needed)
-  command = "ng build --configuration=production"
+  # Build command for Angular
+  command = "npm run build"
 
 # Basic build environment settings
 [build.environment]
