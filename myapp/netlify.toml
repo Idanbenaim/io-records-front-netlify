@@ -6,7 +6,7 @@
   publish = "myapp/dist/myapp"
 
   # Build command for Angular
-  command = "npm run build"
+  command = "ng build"
 
 # Basic build environment settings
 [build.environment]
